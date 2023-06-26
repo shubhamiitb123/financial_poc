@@ -58,10 +58,10 @@ def get_chat_response(question):
 
 
 def company_with_url(company_name):
-    csv_path=os.path.join(Base_Dir,'final_compnaies.csv')
+    csv_path=os.path.join(Base_Dir,'companies_data.csv')
     from sentence_transformers import SentenceTransformer,util
     encode_model = SentenceTransformer('paraphrase-MiniLM-L6-v2')
-    df=pd.read_csv(r"C:\Users\Shubham\Downloads\companies_data.csv")
+    df=pd.read_csv(csv_path)
     companies=list(df['company'])
     companies_urls=list(df['screener url'])
     encoded_names=encode_model.encode(companies)
