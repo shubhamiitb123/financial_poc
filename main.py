@@ -10,11 +10,11 @@ import pypdf
 import llama_index
 import os
 
-with open('key.txt','r') as f:
+# with open('key.txt','r') as f:
 
-    secret_key=f.read().strip()
+#     secret_key=f.read().strip()
 
-
+secret_key = os.getenv('api_key')
 
 
 
