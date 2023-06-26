@@ -16,6 +16,8 @@ import os
 
 secret_key = os.getenv('api_key')
 
+st.write(secret_key)
+st.write(len(secret_key))
 
 
 
@@ -48,7 +50,7 @@ if press:
 
     import time
 
-    time.sleep(10)
+    # time.sleep(10)
 
 
     # st.write('***if you have annual report of it then you can upload it***')
