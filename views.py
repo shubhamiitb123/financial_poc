@@ -47,6 +47,7 @@ def get_chat_response(question):
 
     # Parse the response
     data = response.json()
+    return data
     
     reply= data['choices'][0]['message']['content']
 
