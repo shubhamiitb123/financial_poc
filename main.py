@@ -36,7 +36,9 @@ if press:
 
 
     company_name=get_chat_response(query+'\n \n give acutal name of this company in only one or two words ',secret_key)
-
+    
+    if not company_name:
+        st.stop()
     st.write('company name :',company_name)
     full_company_name,screener_url=company_with_url(company_name)
     

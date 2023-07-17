@@ -48,13 +48,17 @@ def get_chat_response(question,api_key):
     # Parse the response
     data = response.json()
     
+    try:
+        reply= data['choices'][0]['message']['content']
+
+        # Get the model's reply
+    #     reply = data['choices'][0]['message']['content']
+
+        return reply
     
-    reply= data['choices'][0]['message']['content']
-
-    # Get the model's reply
-#     reply = data['choices'][0]['message']['content']
-
-    return reply
+    except Exception as e:
+        print(e)
+        return None
 
 
 def company_with_url(company_name):
