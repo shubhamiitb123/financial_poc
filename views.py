@@ -22,12 +22,12 @@ from PyPDF2 import PdfReader,PdfWriter
 
 
 
-def get_chat_response(question):
+def get_chat_response(question,api_key):
     # API endpoint
     url = 'https://api.openai.com/v1/chat/completions'
 
     # Your OpenAI API key
-    api_key = secret_key
+    # api_key = secret_key
 
     # Request headers
     headers = {
