@@ -48,7 +48,7 @@ def get_chat_response(question,api_key):
     # Parse the response
     data = response.json()
 
-    return data
+    # return data
     
     try:
         reply= data['choices'][0]['message']['content']
@@ -74,14 +74,16 @@ def company_with_url(company_name):
 
     cos=util.cos_sim(encode_model.encode(company_name.split()[0]),encoded_names)
 
-        
-    m=0
-    index=0
-    for i in range(len(cos[0])):
+    similar=list(map(lambda x:x.items,cos[0]))
 
-        if m<cos[0][i].item():
-            index=i
-            m=cos[0][i]
+    index=similar.index(max(similar))
+    # m=0
+    # index=0
+    # for i in range(len(cos[0])):
+
+    #     if m<cos[0][i].item():
+    #         index=i
+    #         m=cos[0][i]
 
     company=companies[index]
     screener_url=companies_urls[index]
@@ -176,12 +178,9 @@ def display_pdf(pdf_file):
     
     return pdf_display
 
-def create_index(company):
+def create_index(company,secret_key):
 
     import openai
-
-    # api_key = "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"
-    openai.api_key = secret_key
 
 
     

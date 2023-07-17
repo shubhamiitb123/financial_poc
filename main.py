@@ -37,11 +37,10 @@ if press:
 
     company_name=get_chat_response(query+'\n \n give acutal name of this company in only one or two words ',secret_key)
 
-    st.write(company_name)
-    st.write('before st.stop()')
-    st.stop()
+  
     if not company_name:
         st.stop()
+
     st.write('company name :',company_name)
     full_company_name,screener_url=company_with_url(company_name)
     
@@ -134,7 +133,7 @@ if press:
 
     
     st.write('creating vector store and storing data in it')
-    create_index(company)
+    create_index(company,secret_key)
 
     st.write('vector store created succesfully ! ')
 
@@ -152,18 +151,18 @@ if press:
 
     questions = [
         "please read the Balance Sheet provided in pdf and fetch the value of Total non - current assets for Mar 2023. fetch only value",
-        "please read the Balance Sheet provided in pdf and fetch the value of Total current assets for Mar 2023. fetch only value",
-        "please read the Balance Sheet provided in pdf and fetch the value of Total assets for Mar 2023. fetch only value",
-        "please read the Balance Sheet provided in pdf and fetch the value of Total equity for Mar 2023. fetch only value",
-        "please read the Balance Sheet provided in pdf and fetch the value of Total non-current liabilities for Mar 2023. fetch only value",
-        "please read the Balance Sheet provided in pdf and fetch the value of Total current liabilities for Mar 2023. fetch only value",
-        "please read the Balance Sheet provided in pdf and fetch the value of Total equity and liabilities for Mar 2023. fetch only value",
-        "please read the Balance Sheet provided in pdf and fetch the value of Total income for Mar 2023. fetch only value",
-        "please read the Balance Sheet provided in pdf and fetch the value of Total expenses for Mar 2023. fetch only value",
-        "please read the Balance Sheet provided in pdf and fetch the value of Profit before tax . fetch only value",
-        "please read the Balance Sheet provided in pdf and fetch the value of Profit for the year for Mar 2023. fetch only value",
-        "please read the Balance Sheet provided in pdf and fetch the value of Total comprehensive income for the year for Mar 2023. fetch only value",
-        "please read the Balance Sheet provided in pdf and fetch the value of tax applied for the year for Mar 2023. fetch only value"
+        # "please read the Balance Sheet provided in pdf and fetch the value of Total current assets for Mar 2023. fetch only value",
+        # "please read the Balance Sheet provided in pdf and fetch the value of Total assets for Mar 2023. fetch only value",
+        # "please read the Balance Sheet provided in pdf and fetch the value of Total equity for Mar 2023. fetch only value",
+        # "please read the Balance Sheet provided in pdf and fetch the value of Total non-current liabilities for Mar 2023. fetch only value",
+        # "please read the Balance Sheet provided in pdf and fetch the value of Total current liabilities for Mar 2023. fetch only value",
+        # "please read the Balance Sheet provided in pdf and fetch the value of Total equity and liabilities for Mar 2023. fetch only value",
+        # "please read the Balance Sheet provided in pdf and fetch the value of Total income for Mar 2023. fetch only value",
+        # "please read the Balance Sheet provided in pdf and fetch the value of Total expenses for Mar 2023. fetch only value",
+        # "please read the Balance Sheet provided in pdf and fetch the value of Profit before tax . fetch only value",
+        # "please read the Balance Sheet provided in pdf and fetch the value of Profit for the year for Mar 2023. fetch only value",
+        # "please read the Balance Sheet provided in pdf and fetch the value of Total comprehensive income for the year for Mar 2023. fetch only value",
+        # "please read the Balance Sheet provided in pdf and fetch the value of tax applied for the year for Mar 2023. fetch only value"
     ]
 
     vstore_path=os.path.join(Base_Dir,f'vector_stores/{company}_vstore')
@@ -172,7 +171,9 @@ if press:
 
 
     data_dict=dict()
-    key=['total non-current assets','total current assests','total asset for march','total equity','Total non-current liabilities','Total current liabilities','Total equity and liabilities','Total income','Total expenses','Profit before tax','Profit for the year','comprehensive income','tax']
+    # key=['total non-current assets','total current assests','total asset for march','total equity','Total non-current liabilities','Total current liabilities','Total equity and liabilities','Total income','Total expenses','Profit before tax','Profit for the year','comprehensive income','tax']
+    
+    key=['total non-current assets']
     for i in range(len(questions)):
         ans=give_answer(index,questions[i]).response
         
