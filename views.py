@@ -13,7 +13,7 @@ import llama_index
 
 #     secret_key=f.read().strip()
 # os.environ["OPENAI_API_KEY"]=secret_key
-secret_key = os.getenv('api_key')
+# secret_key = os.getenv('api_key')
 from langchain import OpenAI
 
 Base_Dir=os.getcwd()
