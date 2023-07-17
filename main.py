@@ -14,10 +14,6 @@ import os
 
 #     secret_key=f.read().strip()
 
-secret_key = os.getenv('api_key')
-
-st.write(secret_key)
-st.write(len(secret_key))
 
 
 
@@ -27,6 +23,7 @@ st.header('Financial Bot')
 
 query=st.text_input('***tell name of company***')
 
+secret_key = st.text_input('put your api key here')
 
 
 
