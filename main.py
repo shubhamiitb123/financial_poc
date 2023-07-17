@@ -36,7 +36,10 @@ if press:
 
 
     company_name=get_chat_response(query+'\n \n give acutal name of this company in only one or two words ',secret_key)
-    
+
+    st.write(company_name)
+    st.write('before st.stop()')
+    st.stop()
     if not company_name:
         st.stop()
     st.write('company name :',company_name)
