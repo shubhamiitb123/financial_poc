@@ -17,7 +17,7 @@ import os
 
 
 
-from views import get_chat_response,company_with_url,report_url,autodownload_report,pdf2txt,create_index,answerMe,balance,shareholding,display_pdf,load_index,give_answer
+from views import get_chat_response,company_with_url,report_url,autodownload_report,pdf2txt,create_index,answerMe,balance,shareholding,display_pdf,load_index,give_answer,api_status
 Base_Dir=os.getcwd()
 st.header('Financial Bot')
 
@@ -26,8 +26,9 @@ query=st.text_input('***tell name of company***')
 secret_key = st.text_input('put your api key here')
 
 
-
-
+if not api_status(secret_key):
+    st.write('Api key is not valid')
+    st.stop()
 
 press=st.button('click here')
 if press:

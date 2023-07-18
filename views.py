@@ -20,7 +20,31 @@ Base_Dir=os.getcwd()
 
 from PyPDF2 import PdfReader,PdfWriter
 
+def api_status(key):
+# Set your OpenAI API key
+#     os.environ('OPENAI_API')
 
+
+#     openai.api_key="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"
+    openai.api_key=key
+    # Try to create a completion
+    try:
+        response = openai.Completion.create(
+            engine="text-davinci-001",
+            prompt="What is the meaning of life?",
+            temperature=0.5,
+            max_tokens=60,
+            top_p=0.3,
+            frequency_penalty=0.5,
+            presence_penalty=0.0,
+        )
+    except openai.OpenAIError as e:
+        
+        return False
+    else:
+  
+       
+        return True
 
 def get_chat_response(question,api_key):
     # API endpoint
