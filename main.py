@@ -25,12 +25,12 @@ query=st.text_input('***tell name of company***')
 
 secret_key = st.text_input('put your api key here')
 
+press=st.button('click here')
 
 if not api_status(secret_key):
     st.write('Api key is not valid')
     st.stop()
 
-press=st.button('click here')
 if press:
 
     st.write('confirm query :  ',query)
