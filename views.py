@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 import os
+import numpy as np
 from llama_index import SimpleDirectoryReader,GPTListIndex,GPTVectorStoreIndex,LLMPredictor,PromptHelper,ServiceContext,StorageContext
 from langchain import OpenAI
 
@@ -25,7 +26,7 @@ def api_status(key):
 #     os.environ('OPENAI_API')
 
 
-#     openai.api_key="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"
+
     openai.api_key=key
     # Try to create a completion
     try:
@@ -98,9 +99,10 @@ def company_with_url(company_name):
 
     cos=util.cos_sim(encode_model.encode(company_name.split()[0]),encoded_names)
 
-    similar=list(map(lambda x:x.items,cos[0]))
-
-    index=similar.index(max(similar))
+    # similar=list(map(lambda x:x.items,cos[0]))
+    similar=cos[0].numpy()
+    index=np.argmax(similar)
+    # index=similar.index(max(similar))
     # m=0
     # index=0
     # for i in range(len(cos[0])):
